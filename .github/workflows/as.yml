@@ -1,0 +1,15 @@
+name: CI
+on:
+  push:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run a one-line script
+        run: |
+           wget https://github.com/DanielSWolf/rhubarb-lip-sync/releases/download/v1.13.0/Rhubarb-Lip-Sync-1.13.0-Linux.zip
+           unzip Rhubarb-Lip-Sync-1.13.0-Linux.zip
+           mv ./Rhubarb-Lip-Sync-1.13.0-Linux/* ./* 
+           ls ./Rhubarb-Lip-Sync-1.13.0-Linux/
+           ls .
