@@ -11,8 +11,8 @@ jobs:
       - run: |
          sudo apt install -y ffmpeg
       - run: |
-         ffmpeg -i audio/3.mp3 audio/3.wav
-         ./rhubarb -o output.txt audio/3.wav
+         ffmpeg -i audio/4.mp3 audio/test.wav
+         ./rhubarb -o output.txt audio/test.wav
          awk 'NR!=1 {print int(($1*24)-1)}' output.txt > output2.txt
          awk 'END{print int($1*24)}' output.txt >> output2.txt
          awk 'NR==FNR{a[NR]=$0;next}{print a [FNR],$0}' output2.txt output.txt > output3.txt
@@ -20,8 +20,7 @@ jobs:
          chmod +x output.sh
          ./output.sh
          ffmpeg -framerate 24 -i output_%05d.png -vcodec png  output.mp4 -y
-         ffmpeg -i output.mp4 -i audio/3.wav -map 1:0 -map 0:0 final.mp4 -y
-         ffmpeg -i final.mp4  -filter:v "scale=144:-2" video/preview.mp4 -y
+         ffmpeg -i output.mp4 -i audio/test.wav -map 1:0 -map 0:0 final.mp4 -y
          
       - name: Run a one-line script
         run: |
