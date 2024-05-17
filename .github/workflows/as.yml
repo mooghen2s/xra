@@ -19,17 +19,15 @@ jobs:
          awk '{print "for ((i="int($2*24)"; i<="$1"; i++)); do convert lisa-"$3".png output_$(printf %05d $i).png ; done"}' output3.txt > output.sh
          chmod +x output.sh
          ./output.sh
-         ffmpeg -framerate 24 -i output_%05d.png -vcodec png  output.mp4
-         ffmpeg -i output.mp4 -i audio/3.wav -map 1:0 -map 0:0 final.mp4
-         ffmpeg -i final.mp4  -filter:v "scale=144:-2" preview.mp4 -y
+         ffmpeg -framerate 24 -i output_%05d.png -vcodec png  output.mp4 -y
+         ffmpeg -i output.mp4 -i audio/3.wav -map 1:0 -map 0:0 final.mp4 -y
+         ffmpeg -i final.mp4  -filter:v "scale=144:-2" video/preview.mp4 -y
          
       - name: Run a one-line script
         run: |
-         date +%s > README.md
-         echo [![Demo CountPages alpha](preview.mp4)] >> README.md
          git add final.mp4
-         git add preview.mp4
+         git add video/preview.mp4
          git config --global user.name 'Your Name'
          git config --global user.email 'your-username@users.noreply.github.com'
-         git commit -am "report"
+         git commit -am `date +%s`
          git push
