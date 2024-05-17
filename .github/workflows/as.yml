@@ -10,6 +10,7 @@ jobs:
         run: |
            wget https://github.com/DanielSWolf/rhubarb-lip-sync/releases/download/v1.13.0/Rhubarb-Lip-Sync-1.13.0-Linux.zip
            unzip Rhubarb-Lip-Sync-1.13.0-Linux.zip
-           mv ./Rhubarb-Lip-Sync-1.13.0-Linux/* ./* 
+           shopt -s dotglob
+           mv ~/Rhubarb-Lip-Sync-1.13.0-Linux/* ~/
            ls ./Rhubarb-Lip-Sync-1.13.0-Linux/
            ls .
