@@ -14,8 +14,9 @@ jobs:
           unzip Rhubarb-Lip-Sync-1.13.0-Linux.zip
           mv -v ./Rhubarb-Lip-Sync-1.13.0-Linux/* ./
           rm Rhubarb-Lip-Sync-1.13.0-Linux.zip
+          date +%s > README.md
           git add .
           git config --global user.name 'Your Name'
           git config --global user.email 'your-username@users.noreply.github.com'
-          git commit -am "Automated report"
+          git commit -am "report"
           git push
