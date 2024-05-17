@@ -1,4 +1,6 @@
 name: CI
+env:
+  GITHUB_TOKEN: ${{ secrets.TOT }}
 on:
   push:
 jobs:
@@ -8,8 +10,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run a one-line script
         run: |
-           wget https://github.com/DanielSWolf/rhubarb-lip-sync/releases/download/v1.13.0/Rhubarb-Lip-Sync-1.13.0-Linux.zip
-           unzip Rhubarb-Lip-Sync-1.13.0-Linux.zip
-           mv -v ./Rhubarb-Lip-Sync-1.13.0-Linux/* ./
-           ls ./Rhubarb-Lip-Sync-1.13.0-Linux/
-           ls .
+          wget https://github.com/DanielSWolf/rhubarb-lip-sync/releases/download/v1.13.0/Rhubarb-Lip-Sync-1.13.0-Linux.zip
+          unzip Rhubarb-Lip-Sync-1.13.0-Linux.zip
+          mv -v ./Rhubarb-Lip-Sync-1.13.0-Linux/* ./
+          rm Rhubarb-Lip-Sync-1.13.0-Linux.zip
+          git add .
+          git config --global user.name 'Your Name'
+          git config --global user.email 'your-username@users.noreply.github.com'
+          git commit -am "Automated report"
+          git push
