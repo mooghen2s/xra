@@ -12,7 +12,7 @@ jobs:
          sudo apt install -y ffmpeg
       - run: |
          ffmpeg -i audio/4.mp3 audio/test.wav
-         ./rhubarb -o output.txt audio/test.wav
+         ./rhubarb -r phonetic -o output.txt audio/test.wav
          awk 'NR!=1 {print int(($1*24)-1)}' output.txt > output2.txt
          awk 'END{print int($1*24)}' output.txt >> output2.txt
          awk 'NR==FNR{a[NR]=$0;next}{print a [FNR],$0}' output2.txt output.txt > output3.txt
