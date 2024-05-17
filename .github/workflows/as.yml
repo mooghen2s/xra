@@ -9,6 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
+         apt install -y ffmpeg
          ffmpeg -i audio/3.mp3 audio/3.wav
          ./rhubarb -o output.txt audio/3.wav
          awk 'NR!=1 {print int(($1*24)-1)}' output.txt > output2.txt
