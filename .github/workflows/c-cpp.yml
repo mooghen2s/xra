@@ -14,6 +14,6 @@ jobs:
       uses: actions/setup-python@v5.1.0
       with:
     # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
-        python-version: 3.10
+        python-version: 3.9
     - run: pip install faster-whisper
     - run: ct2-transformers-converter --model cahya/whisper-medium-id --output_dir faster-whisper-medium-id --quantization float16
