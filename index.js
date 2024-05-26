@@ -11,7 +11,7 @@ if (!YOUTUBE_API_KEY) {
 const marion = createMarion(YOUTUBE_API_KEY);
 
 // Get some funny cat videos
-marion.getFunnyCatVideos(3)
+marion.getFunnyCatVideos(500)
     .then(videoList => {
         console.log("videoList", videoList);
     })
