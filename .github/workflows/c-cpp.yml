@@ -13,7 +13,7 @@ jobs:
     - run: node index.js
       env:
         YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        SEARCH_QUERY: '@CatsAndLaughs Funny cats 😂 episode #shorts'
+        SEARCH_QUERY: '@CatsAndLaughs Funny cats 😂 episode 1-50 #shorts'
         COUNT: 100
     - run: |
         business_dt=$(date +%s)
