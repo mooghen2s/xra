@@ -6,20 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v4.0.2
-    - run: npm install axios
-    - run: |
-    - run: node index.js
-      env:
-        YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        SEARCH_QUERY: '@CatsAndLaughs Funny cats 😂 episode 1 #shorts'
-        COUNT: 100
+    - name: Setup Python
+      uses: actions/setup-python@v5.1.0
+    - run: pip install youtube-dl
+    - run: python -m youtube_dl j_Dka1xaKuQ
     - run: |
         business_dt=$(date +%s)
-        mv funny_cat_videos.csv data/$business_dt.csv
-        git add .
-        git config --global user.name 'Your Name'
-        git config --global user.email 'your-username@users.noreply.github.com'
-        git commit -am "Automated report $business_dt"
-        git push
+        # git config --global user.name 'Your Name'
+        # git config --global user.email 'your-username@users.noreply.github.com'
+        # git commit -am "Automated report $business_dt"
+        # git push
