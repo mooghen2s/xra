@@ -1,20 +1,17 @@
 name: C/C++ CI
-
 on:
   push:
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
-    - name: Setup Python
-      uses: actions/setup-python@v5.1.0
-      with:
-    # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
-        python-version: 3.9
-    - run: pip install faster-whisper
-    - run: python a.py
-    
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4.0.2
+    - run: npm install axios
+    - run: |
+       echo "{" > config.json
+       echo '  "YOUTUBE_API_KEY": "YOUR_YOUTUBE_API_KEY"' >> config.json
+       echo "}" >> config.json
+       cat config.json
+    - run: ls
