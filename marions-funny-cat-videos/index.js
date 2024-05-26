@@ -1,13 +1,14 @@
+// marions-funny-cat-videos/index.js
 const fs = require('fs');
 const axios = require('axios');
 
 function createMarion(apiKey) {
-    const getFunnyCatVideos = async (count) => {
+    const getFunnyCatVideos = async (query, count) => {
         try {
             const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
                 params: {
                     part: 'snippet',
-                    q: 'funny cat',
+                    q: query,
                     type: 'video',
                     maxResults: count,
                     key: apiKey,
@@ -22,8 +23,8 @@ function createMarion(apiKey) {
         }
     };
 
-    const exportFunnyCatVideosCSV = async (filename, count) => {
-        const videos = await getFunnyCatVideos(count);
+    const exportFunnyCatVideosCSV = async (filename, query, count) => {
+        const videos = await getFunnyCatVideos(query, count);
         const csvContent = videos.map(video => `"${video.title}","${video.url}"`).join('\n');
         fs.writeFileSync(filename, csvContent, 'utf8');
     };
