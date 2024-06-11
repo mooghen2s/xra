@@ -28,19 +28,18 @@ jobs:
     - name: Install Google Chrome using Chocolatey
       if: steps.cache-chrome.outputs.cache-hit != 'true'
       run: choco install googlechrome -y
-
     - name: Ensure pip cache directory exists
       run: mkdir -p ~/.cache/pip
       shell: bash
-
-    - name: Cache pip packages
-      id: cache-pip
-      uses: actions/cache@v3
+    - uses: 'actions/cache@v2'
+      id: cache
       with:
-        path: ~/.cache/pip
-        key: pip-cache-${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          pip-cache-${{ runner.os }}-
+      # CAUTION: Replace this hardcoded "python3.7" dirname with
+      # the dirname providing your desired Python interpreter.
+        path: ${{ env.pythonLocation }}
+        key: ${{ env.pythonLocation }}-${{ hashFiles('**/requirements.txt') }}
+        #restore-keys: |
+         # ${{ runner.os }}-
 
     - name: Install pyautogui
       run: pip install -r requirements.txt
