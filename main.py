@@ -32,7 +32,7 @@ time.sleep(5)
 
 #keyboard.press_and_release('k') 
 # Tangkap layar dan simpan sebagai PNG
-time.sleep(250)
+time.sleep(150)
 print(profile_dir)
 with mss.mss() as sct:
     screenshot = sct.shot(output='screenshot.png')
