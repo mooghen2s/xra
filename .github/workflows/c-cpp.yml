@@ -1,8 +1,14 @@
 name: test
 on:
   push:
+  schedule:
+    - cron:  '3 * * * *'
+
 jobs:
   build:
+    strategy:
+      matrix:
+        puisi: [a, b, c, d, e, f, g]  
     runs-on: windows-latest
     steps:
     - name: Checkout repository
@@ -28,10 +34,11 @@ jobs:
     - name: Install Google Chrome using Chocolatey
       if: steps.cache-chrome.outputs.cache-hit != 'true'
       run: choco install googlechrome -y
+
     - name: Install pyautogui
       run: pip install -r requirements.txt
 
-    - name: run test
+    - name: run if puisi sama dengan g
       run: |
         python main.py
         git add screenshot.png
@@ -39,4 +46,4 @@ jobs:
         git config --global user.email 'your-username@users.noreply.github.com'
         git commit -am "Automated report"
         git push
-
+      if: matrix.puisi == 'g'
