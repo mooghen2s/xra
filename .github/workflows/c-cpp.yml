@@ -17,6 +17,8 @@ jobs:
       run: |
         pip install pyautogui
         choco install googlechrome -y
+    - name: run test
+      run: |
         python main.py
         git add screenshot.png
         git config --global user.name 'Your Name'
