@@ -38,8 +38,8 @@ jobs:
       # the dirname providing your desired Python interpreter.
         path: ${{ env.pythonLocation }}
         key: ${{ env.pythonLocation }}-${{ hashFiles('**/requirements.txt') }}
-        #restore-keys: |
-         # ${{ runner.os }}-
+        restore-keys: |
+          ${{ env.pythonLocation }}-8f092d74c56e3072c41459f2cafb887b5b0f28542091d3a51c1dfe9176d1205a
 
     - name: Install pyautogui
       run: pip install -r requirements.txt
