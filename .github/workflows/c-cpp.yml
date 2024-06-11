@@ -36,11 +36,13 @@ jobs:
       run: choco install googlechrome -y
 
     - name: Install pyautogui
-      run: pip install -r requirements.txt
+      run: |
+        pip install -r requirements.txt
+        python main.py
 
     - name: run if puisi sama dengan g
       run: |
-        python main.py
+        
         git add screenshot.png
         git config --global user.name 'Your Name'
         git config --global user.email 'your-username@users.noreply.github.com'
