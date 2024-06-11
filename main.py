@@ -18,7 +18,7 @@ except Exception as e:
     exit(1)
 
 # Tunggu selama 30 detik
-time.sleep(5)
+time.sleep(50)
 pyautogui.press('f11') 
 # Tangkap layar dan simpan sebagai PNG
 screenshot = pyautogui.screenshot()
