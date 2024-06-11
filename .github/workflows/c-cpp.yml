@@ -11,12 +11,26 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v5.1.0
       with:
-        python-version: '3.8'  # Specify the Python version you need, e.g., '3.8'
+        python-version: '3.x'  # Specify the Python version you need, e.g., '3.8'
 
+    - name: Get Google Chrome version
+      id: chrome-version
+      run: choco search googlechrome --exact --limit-output | FindStr "googlechrome"
+      shell: pwsh
+
+    - name: Cache Google Chrome
+      id: cache-chrome
+      uses: actions/cache@v3
+      with:
+        path: C:\Program Files\Google\Chrome\Application
+        key: google-chrome-${{ steps.chrome-version.outputs.stdout }}
+
+    - name: Install Google Chrome using Chocolatey
+      if: steps.cache-chrome.outputs.cache-hit != 'true'
+      run: choco install googlechrome -y
     - name: Install Google Chrome using Chocolatey
       run: |
         pip install pyautogui
-        choco install googlechrome -y
     - name: run test
       run: |
         python main.py
