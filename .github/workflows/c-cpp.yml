@@ -5,9 +5,18 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
     - name: Setup Python
       uses: actions/setup-python@v5.1.0
+      with:
+        python-version: '3.x'  # Specify the Python version you need, e.g., '3.8'
 
-    - run: |
+    - name: Update winget
+      run: |
+        winget source update
+
+    - name: Install Google Chrome
+      run: |
         winget install Google.Chrome
