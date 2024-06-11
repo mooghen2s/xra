@@ -1,3 +1,4 @@
+
 name: test
 on:
   push:
@@ -15,7 +16,7 @@ jobs:
 
     - name: Get Google Chrome version
       id: chrome-version
-      run: choco search googlechrome --exact --limit-output | FindStr "googlechrome"
+      run: echo "::set-output name=version::$(choco search googlechrome --exact --limit-output | Select-String -Pattern '^googlechrome ' | ForEach-Object { $_.Line.Split()[1] })"
       shell: pwsh
 
     - name: Cache Google Chrome
@@ -23,7 +24,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: C:\Program Files\Google\Chrome\Application
-        key: google-chrome-${{ steps.chrome-version.outputs.stdout }}
+        key: google-chrome-${{ steps.chrome-version.outputs.version }}
 
     - name: Install Google Chrome using Chocolatey
       if: steps.cache-chrome.outputs.cache-hit != 'true'
