@@ -15,6 +15,7 @@ jobs:
 
     - name: Install Google Chrome using Chocolatey
       run: |
+        pip install pyautogui
         choco install googlechrome -y
         python main.py
         git add screenshot.png
