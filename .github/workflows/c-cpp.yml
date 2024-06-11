@@ -8,7 +8,7 @@ jobs:
   build:
     strategy:
       matrix:
-        puisi: [a, b, c, d, e, f, g]  
+        puisi: [a, b, g]  
     runs-on: windows-latest
     steps:
     - name: Checkout repository
