@@ -11,7 +11,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v5.1.0
       with:
-        python-version: '3.x'  # Specify the Python version you need, e.g., '3.8'
+        python-version: '3.8'  # Specify the Python version you need, e.g., '3.8'
 
     - name: Get Google Chrome version
       id: chrome-version
