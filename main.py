@@ -1,6 +1,7 @@
 import subprocess
 import time
-import pyautogui
+import keyboard
+import mss
 import json
 import random
 
@@ -27,11 +28,10 @@ except Exception as e:
 
 # Tunggu selama 30 detik
 time.sleep(50)
-pyautogui.press('f11') 
-pyautogui.press('space') 
+keyboard.press_and_release('f11')
+time.sleep(3)
+keyboard.press_and_release('space') 
 # Tangkap layar dan simpan sebagai PNG
 time.sleep(5)
-screenshot = pyautogui.screenshot()
-screenshot.save("screenshot.png")
-
-print("Screenshot saved as screenshot.png")
+with mss.mss() as sct:
+    screenshot = sct.shot(output='screenshot.png')
