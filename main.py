@@ -29,7 +29,7 @@ except Exception as e:
 time.sleep(5)
 keyboard.press_and_release('f11')
 time.sleep(3)
-#keyboard.press_and_release('space') 
+keyboard.press_and_release('k') 
 # Tangkap layar dan simpan sebagai PNG
 time.sleep(250)
 print(profile_dir)
