@@ -11,9 +11,8 @@ try:
         videos = json.load(file)
         random_video = random.choice(videos)
         url = random_video['url']
-        print(url)
     Url_browser = f'https://www.youtube.com/watch?v={url}'
-    profile_dir = 'Profile2'
+    profile_dir = 'Profile{url}'
     window_size = '300,300'
     command = [
         "C:/Program Files/Google/Chrome/Application/chrome.exe",
@@ -27,11 +26,12 @@ except Exception as e:
     exit(1)
 
 # Tunggu selama 30 detik
-time.sleep(50)
+time.sleep(5)
 keyboard.press_and_release('f11')
 time.sleep(3)
 keyboard.press_and_release('space') 
 # Tangkap layar dan simpan sebagai PNG
-time.sleep(5)
+time.sleep(50)
+print(profile_dir)
 with mss.mss() as sct:
     screenshot = sct.shot(output='screenshot.png')
