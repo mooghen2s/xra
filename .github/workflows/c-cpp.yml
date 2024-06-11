@@ -40,10 +40,10 @@ jobs:
         path: ~/.cache/pip
         key: pip-cache-${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
         restore-keys: |
-          pip-cache-${{ runner.os }}-
+          pip-cache-${{ runner.os }}-f540ccd8761f81b876b2bc494aea6ab8ad4791b39a6f1688b25c5d1ae90f6e8f
 
     - name: Install pyautogui
-      run: pip install pyautogui
+      run: pip install -r requirements.txt
 
     - name: run test
       run: |
