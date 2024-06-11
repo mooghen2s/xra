@@ -8,12 +8,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Setup Python
       uses: actions/setup-python@v5.1.0
-    - run: pip install youtube-dl
-    - run: python -m youtube_dl https://www.youtube.com/watch?v=j_Dka1xaKuQ
-    
+
     - run: |
-        business_dt=$(date +%s)
-        # git config --global user.name 'Your Name'
-        # git config --global user.email 'your-username@users.noreply.github.com'
-        # git commit -am "Automated report $business_dt"
-        # git push
+        pip install webui2
+        python main.py
