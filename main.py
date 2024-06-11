@@ -28,8 +28,9 @@ except Exception as e:
 # Tunggu selama 30 detik
 time.sleep(5)
 keyboard.press_and_release('f11')
-time.sleep(3)
-keyboard.press_and_release('k') 
+time.sleep(5)
+keyboard.send('media_stop')
+#keyboard.press_and_release('k') 
 # Tangkap layar dan simpan sebagai PNG
 time.sleep(250)
 print(profile_dir)
