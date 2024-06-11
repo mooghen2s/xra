@@ -1,9 +1,17 @@
 import subprocess
 import time
 import pyautogui
+import json
+import random
 
 try:
-    Url_browser = 'https://www.youtube.com/watch?v=Pv5jRSqSzNE'
+    json_file = f'videos.json'
+    with open(json_file, 'r') as file:
+        videos = json.load(file)
+        random_video = random.choice(videos)
+        url = random_video['url']
+        print(url)
+    Url_browser = f'https://www.youtube.com/watch?v={url}'
     profile_dir = 'Profile2'
     window_size = '300,300'
     command = [
