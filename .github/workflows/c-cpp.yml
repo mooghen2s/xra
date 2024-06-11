@@ -1,4 +1,3 @@
-
 name: test
 on:
   push:
@@ -12,7 +11,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v5.1.0
       with:
-        python-version: '3.x'  # Specify the Python version you need, e.g., '3.8'
+        python-version: '3.8'  # Specify the Python version you need, e.g., '3.8'
 
     - name: Get Google Chrome version
       id: chrome-version
@@ -29,9 +28,19 @@ jobs:
     - name: Install Google Chrome using Chocolatey
       if: steps.cache-chrome.outputs.cache-hit != 'true'
       run: choco install googlechrome -y
-    - name: Install Google Chrome using Chocolatey
-      run: |
-        pip install pyautogui
+
+    - name: Cache pip packages
+      id: cache-pip
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: pip-cache-${{ runner.os }}-pyautogui
+        restore-keys: |
+          pip-cache-${{ runner.os }}-
+
+    - name: Install pyautogui
+      run: pip install pyautogui
+
     - name: run test
       run: |
         python main.py
