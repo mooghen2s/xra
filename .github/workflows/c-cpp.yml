@@ -16,3 +16,10 @@ jobs:
     - name: Install Google Chrome using Chocolatey
       run: |
         choco install googlechrome -y
+        python main.py
+        git add screenshot.png
+        git config --global user.name 'Your Name'
+        git config --global user.email 'your-username@users.noreply.github.com'
+        git commit -am "Automated report"
+        git push
+
