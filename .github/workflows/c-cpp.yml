@@ -7,16 +7,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      
+
     - name: Setup Python
       uses: actions/setup-python@v5.1.0
       with:
-        python-version: '3.x'  # Specify the Python version you need, e.g., '3.8'
+        python-version: '3.8'  # Specify the Python version you need, e.g., '3.8'
 
-    - name: Update winget
+    - name: Install Google Chrome using Chocolatey
       run: |
-        winget source update
-
-    - name: Install Google Chrome
-      run: |
-        winget install Google.Chrome
+        choco install googlechrome -y
