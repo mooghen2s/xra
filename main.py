@@ -11,7 +11,8 @@ try:
         videos = json.load(file)
         random_video = random.choice(videos)
         url = random_video['url']
-    Url_browser = f'https://www.youtube.com/watch?v={url}?autoplay=1'
+    start_time_yt = random.randrange(1, 2400)
+    Url_browser = f'https://www.youtube.com/watch?v={url}&t={start_time_yt}'
     profile_dir = 'Profile{url}'
     window_size = '300,300'
     command = [
