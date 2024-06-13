@@ -19,9 +19,9 @@ jobs:
     - name: Install pyautogui
       run: |
         pip install youtube_dl
-        pip show youtube_dl
+        # copy /y youtube.py "c:\hostedtoolcache\windows\python\3.8.10\x64\lib\site-packages\youtube_dl\extractor"
         python get_id.py
-        copy /y youube.py "c:\hostedtoolcache\windows\python\3.8.10\x64\lib\site-packages\youtube_dl\extractor"
+        
     - name: run if puisi sama dengan g
       run: |
         git add videos.json
