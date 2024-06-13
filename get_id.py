@@ -23,8 +23,5 @@ def download_playlist(url):
             print("Tidak ada video yang ditemukan dalam daftar putar.")
 
 if __name__ == "__main__":
-    copy_path = 'c:\hostedtoolcache\windows\python\3.8.10\x64\lib\site-packages\youtube_dl\extractor'
-    file_name = 'youtube.py'
-    shutil.copy(file_name, copy_path)
     playlist_url = "https://www.youtube.com/@mooghenofficial/videos"
     download_playlist(playlist_url)
