@@ -20,13 +20,12 @@ jobs:
       run: |
         pip install youtube_dl
         pip show youtube_dl
-        #python get_id.py
-
+        python get_id.py
+        dir "c:\hostedtoolcache\windows\python\3.8.10\x64\lib\site-packages\youtube_dl\extractor"
     - name: run if puisi sama dengan g
       run: |
-        ls
-        #git add videos.json
-        #git config --global user.name 'Your Name'
-        #git config --global user.email 'your-username@users.noreply.github.com'
-        #git commit -am "Automated report"
-        #git push
+        git add videos.json
+        git config --global user.name 'Your Name'
+        git config --global user.email 'your-username@users.noreply.github.com'
+        git commit -am "Automated report"
+        git push
