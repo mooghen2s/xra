@@ -1,11 +1,11 @@
-name: test
+name: get_id
 on:
   push:
   schedule:
-    - cron:  '* */1 * * *'
+    - cron:  '* 1 * * *'
 
 jobs:
-  build:
+  GetId:
     runs-on: windows-latest
     steps:
     - name: Checkout repository
