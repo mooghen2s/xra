@@ -13,7 +13,7 @@ try:
         url = random_video['url']
     start_time_yt = random.randrange(1, 2400)
     Url_browser = f'https://www.youtube.com/watch?v={url}&t={start_time_yt}'
-    profile_dir = 'Profile{url}'
+    profile_dir = f'Profile{url}'
     window_size = '300,300'
     command = [
         "C:/Program Files/Google/Chrome/Application/chrome.exe",
