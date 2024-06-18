@@ -19,6 +19,7 @@ try:
         "C:/Program Files/Google/Chrome/Application/chrome.exe",
         f"--user-data-dir=C:/ai/browser/profiles/{profile_dir}",
         f"--profile-directory={profile_dir}",
+        f"--autoplay-policy=no-user-gesture-required",
         f"--app={Url_browser}",
     ]
     chrome_process = subprocess.Popen(command)
