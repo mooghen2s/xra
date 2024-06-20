@@ -24,14 +24,6 @@ jobs:
       run: echo "::set-output name=version::$(choco search googlechrome --exact --limit-output | Select-String -Pattern '^googlechrome ' | ForEach-Object { $_.Line.Split()[1] })"
       shell: pwsh
 
-    - name: Cache profiles folder
-      uses: actions/cache@v2
-      with:
-        path: profiles
-        key: ${{ runner.os }}-profiles-${{ hashFiles('profiles/**') }}
-        restore-keys: |
-          ${{ runner.os }}-profiles-
-
     - name: Cache Google Chrome
       id: cache-chrome
       uses: actions/cache@v3
