@@ -1,18 +1,5 @@
 {
-  "name": "xra",
-  "version": "1.0.0",
-  "description": "<v> 1 </v> <a href=\"https://colab.research.google.com/github/mooghen2s/xra/blob/main/motion.ipynb\" target=\"_blank\" rel=\"noopener\">motion </a> <v> 2 </v> <a href=\"https://colab.research.google.com/github/mooghen2s/xra/blob/main/easy.ipynb\" target=\"_blank\" rel=\"noopener\">easy </a> <a href=\"http://example.com\" target=\"_blank\"></a>",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.2"
+    "echo-cli": "^2.0.0"
   }
 }
