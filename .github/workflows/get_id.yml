@@ -1,6 +1,6 @@
 name: get_id
 on:
-  push:
+  #push:
   schedule:
     - cron:  '* 1 * * *'
 
