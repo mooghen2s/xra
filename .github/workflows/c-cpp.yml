@@ -49,11 +49,13 @@ jobs:
 
     - name: run if puisi sama dengan g
       run: |        
-        python main.py 1
+        #python main.py 1
+        ls
       if: matrix.puisi == 'a'
     - name: run if puisi sama dengan g
       run: |        
-        python main.py 2
+        #python main.py 2
+        ls
       if: matrix.puisi == 'b'
     - name: run if puisi sama dengan g
       run: |        
