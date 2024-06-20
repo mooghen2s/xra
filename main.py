@@ -4,6 +4,7 @@ import keyboard
 import mss
 import json
 import random
+import os
 
 try:
     json_file = f'videos.json'
@@ -11,13 +12,15 @@ try:
         videos = json.load(file)
         random_video = random.choice(videos)
         url = random_video['url']
+
+    current_directory = os.getcwd()
     start_time_yt = random.randrange(1, 2400)
     Url_browser = f'https://www.youtube.com/watch?v={url}&t={start_time_yt}'
     profile_dir = f'Profile{url}'
     window_size = '300,300'
     command = [
         "C:/Program Files/Google/Chrome/Application/chrome.exe",
-        f"--user-data-dir=C:/ai/browser/profiles/{profile_dir}",
+        f"--user-data-dir={current_directory}/profiles/{profile_dir}",
         f"--profile-directory={profile_dir}",
         f"--autoplay-policy=no-user-gesture-required",
         f"--app={Url_browser}",
