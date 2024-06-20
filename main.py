@@ -49,7 +49,7 @@ def nonton_youtube(profile_dir):
 
     #keyboard.press_and_release('k') 
     # Tangkap layar dan simpan sebagai PNG
-    #time.sleep(150)
+    time.sleep(350)
     print(profile_dir)
     with mss.mss() as sct:
         screenshot = sct.shot(output='screenshot.png')
