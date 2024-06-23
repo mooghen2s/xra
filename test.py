@@ -58,7 +58,7 @@ for i in range(5):
     time.sleep(10)
     os.system('xdotool key enter')
     #pyautogui.press("enter")
-    time.sleep(1)
+    time.sleep(1000)
     #pyautogui.keyUp("enter")
     with mss.mss() as sct:
         screenshot = sct.shot(output='screenshot.png')
