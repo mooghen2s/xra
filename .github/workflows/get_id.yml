@@ -29,4 +29,7 @@ jobs:
         git config --global user.email 'your-username@users.noreply.github.com'
         git commit -am "Automated report"
         git push
-        docker run docker run -it -p 7860:7860 --platform=linux/amd64 registry.hf.space/majendakin7kin-test:latest
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - run: docker run -it -p 7860:7860 --platform=linux/amd64 registry.hf.space/majendakin7kin-test:latest
