@@ -3,23 +3,11 @@ name: Parallel Jobs Example
 on: [push, pull_request]
 
 jobs:
-  generate-numbers:
-    runs-on: ubuntu-latest
-    outputs:
-      numbers: ${{ steps.generate.outputs.numbers }}
-    steps:
-    - name: Generate Numbers
-      id: generate
-      run: |
-        numbers=$(seq 1 10 | paste -sd " " - | jq -R 'split(" ") | map("output_" + .)')
-        echo "numbers=$numbers" >> $GITHUB_ENV
-
   parallel-jobs:
-    needs: generate-numbers
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        number: ${{ fromJson(needs.generate-numbers.outputs.numbers) }}
+        number: [1, 2, 3, 4, 5, 6,]
     steps:
     - name: Run Parallel Job
       run: |
