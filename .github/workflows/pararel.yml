@@ -1,0 +1,26 @@
+name: Parallel Jobs Example
+
+on: [push, pull_request]
+
+jobs:
+  generate-numbers:
+    runs-on: ubuntu-latest
+    outputs:
+      numbers: ${{ steps.generate.outputs.numbers }}
+    steps:
+    - name: Generate Numbers
+      id: generate
+      run: |
+        numbers=$(seq 1 10)
+        echo "::set-output name=numbers::${numbers}"
+
+  parallel-jobs:
+    needs: generate-numbers
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        number: ${{ fromJson(needs.generate-numbers.outputs.numbers) }}
+    steps:
+    - name: Run Parallel Job
+      run: |
+        echo "Running job for number: test${{ matrix.number }}.txt"
