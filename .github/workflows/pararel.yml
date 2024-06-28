@@ -11,9 +11,10 @@ jobs:
     - name: Generate Numbers
       id: generate
       run: |
-        numbers=$(seq 1 10 | jq -c -R '[split(" ")] | .[0]')
+        numbers=$(seq 1 10 | jq -c -R 'split(" ") | map(tonumber)')
         echo "numbers=$numbers" >> $GITHUB_ENV
-        echo "::set-output name=numbers::$numbers"
+      env:
+        GITHUB_ENV: $GITHUB_ENV
 
   parallel-jobs:
     needs: generate-numbers
