@@ -11,8 +11,11 @@ jobs:
     - name: Generate Numbers
       id: generate
       run: |
-        numbers=$(seq 1 10)
-        echo "::set-output name=numbers::${numbers}"
+        numbers=$(seq 1 10 | tr '\n' ' ')
+        echo "numbers=$numbers" >> $GITHUB_ENV
+    - name: Set Output
+      id: set-output
+      run: echo "::set-output name=numbers::$(echo ${{ env.numbers }} | jq -R -s -c 'split(" ")')"
 
   parallel-jobs:
     needs: generate-numbers
@@ -23,4 +26,4 @@ jobs:
     steps:
     - name: Run Parallel Job
       run: |
-        echo "Running job for number: test${{ matrix.number }}.txt"
+        echo "Running job for number: ${{ matrix.number }}"
