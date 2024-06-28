@@ -11,17 +11,16 @@ jobs:
     - name: Generate Numbers
       id: generate
       run: |
-        numbers=$(seq 1 10 | jq -c -R 'split(" ") | map(tonumber)')
-        echo "numbers=$numbers" >> $GITHUB_ENV
-      env:
-        GITHUB_ENV: $GITHUB_ENV
+        numbers=$(seq 1 10 | jq -c -R '[split(" ")] | .[0]')
+        echo "numbers=output_$numbers" >> $GITHUB_ENV
+        echo "::set-output name=numbers::$numbers"
 
   parallel-jobs:
     needs: generate-numbers
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        number: a${{ fromJson(needs.generate-numbers.outputs.numbers) }}
+        number: ${{ fromJson(needs.generate-numbers.outputs.numbers) }}
     steps:
     - name: Run Parallel Job
       run: |
