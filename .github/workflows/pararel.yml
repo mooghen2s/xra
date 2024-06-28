@@ -11,7 +11,7 @@ jobs:
     - name: Generate Numbers
       id: generate
       run: |
-        numbers=$(seq 1 10 | tr '\n' ' ')
+        numbers=$(seq 1 10 | jq -c -R 'split(" ")')
         echo "numbers=$numbers" >> $GITHUB_ENV
 
   parallel-jobs:
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        number: ${{ env.numbers }}
+        number: ${{ fromJson(needs.generate-numbers.outputs.numbers) }}
     steps:
     - name: Run Parallel Job
       run: |
