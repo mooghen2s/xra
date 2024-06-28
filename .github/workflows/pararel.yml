@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        number: ${{ fromJson(needs.generate-numbers.outputs.numbers) }}
+        number: a${{ fromJson(needs.generate-numbers.outputs.numbers) }}
     steps:
     - name: Run Parallel Job
       run: |
