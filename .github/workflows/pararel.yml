@@ -11,7 +11,7 @@ jobs:
     - name: Generate Numbers
       id: generate
       run: |
-        numbers=$(seq 1 10 | jq -c -R '[split("output_ ")] | .[0]')
+        numbers=$(seq 1 10 | jq -R 'split(" ") | map("output_" + .)' | jq -c)
         echo "numbers=$numbers" >> $GITHUB_ENV
         echo "::set-output name=numbers::$numbers"
 
