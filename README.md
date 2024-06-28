@@ -5,3 +5,4 @@
 <h1> 3 </h1>
 <a href="https://colab.research.google.com/github/mooghen2s/xra/blob/main/downloader_yt.ipynb" target="_blank">downloader yt</a>
 <h1> 4 </h1>
+<a href="https://colab.research.google.com/github/mooghen2s/xra/blob/main/Edge_Tts_Novel.ipynb" target="_blank">Edge Tts Novel</a>
