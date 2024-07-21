@@ -30,7 +30,7 @@ def set_max_output():
     try:
         with open(input_file, 'r') as file:
             data = json.load(file)
-     except json.JSONDecodeError:
+    except json.JSONDecodeError:
         print(f"Gagal membaca file {input_file}, pastikan file tersebut berformat JSON yang benar.")
         return
     last_profile_index = -1
